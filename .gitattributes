@@ -1,0 +1,11 @@
+Configura todos los archivos de texto para usar CRLF en Windows y LF en otros sistemas
+
+text=auto
+
+Asegura que ciertos archivos siempre usen LF (por ejemplo, scripts)
+
+*.js text eol=lf *.json text eol=lf *.html text eol=lf *.css text eol=lf
+
+Archivos binarios (no deben ser tratados como texto)
+
+*.ico binary *.icns binary
