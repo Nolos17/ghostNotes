@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link href="../public/css/tailwind.css" rel="stylesheet">
+  <style>
+    /* Permite arrastrar la ventana por la cabecera */
+    .draggable {
+      -webkit-app-region: drag;
+      cursor: grab;
+    }
+    /* Evita que botones bloqueen el arrastre */
+    .no-drag {
+      -webkit-app-region: no-drag;
+    }
+    /* Fallback CSS por si tailwind-scrollbar falla */
+    #notes-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    #notes-container::-webkit-scrollbar-track {
+      background: rgba(6, 182, 212, 0.1); /* Cian-500/10 */
+      border-radius: 4px;
+    }
+    #notes-container::-webkit-scrollbar-thumb {
+      background: rgba(6, 181, 212, 0.877); /* Cian-500/50 */
+      border-radius: 4px;
+    }
+    #notes-container::-webkit-scrollbar-thumb:hover {
+      background: rgb(6, 181, 212); /* Cian-500/80 */
+    }
+  </style>
+</head>
+<body class="bg-cyan-500/20 p-2 h-screen w-screen flex flex-col">
+  <!-- Cabecera draggable -->
+  <div class="draggable bg-cyan-500/80 text-black font-semibold px-4 py-2 flex justify-between items-center rounded mb-2">
+    <!-- Izquierda: Notas y botones de añadir/recargar -->
+    <div class="flex items-center gap-2">
+      <span>🗒️ Notas</span>
+      <div class="no-drag flex items-center space-x-2">
+        <button id="add-note" class="text-purple-600 text-2xl hover:text-purple-800" title="Nueva nota">➕</button>
+        <button id="load-all-notes" class="text-blue-600 text-2xl hover:text-blue-800" title="Recargar">🔄</button>
+      </div>
+    </div>
+    <!-- Derecha: Botón de cierre -->
+    <button id="close-window" class="no-drag text-red-500 text-xl hover:text-red-700" title="Cerrar">✖️</button>
+  </div>
+
+  <!-- Contenedor de notas -->
+  <div id="notes-container" class="bg-cyan-500/30 flex-1 max-h-[500px] overflow-y-auto space-y-4 px-2 font-custom"></div>
+
+  <script src="../js/notes.js"></script>
+</body>
+</html>

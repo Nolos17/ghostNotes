@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Archivos generados por Electron Forge
+out/
+dist/
+
+# Archivos generados por Tailwind
+public/css/tailwind.css
+
+# Datos de usuario
+notes/notes.json
+
+# Archivos temporales y de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Archivos de configuración local
+.env
+.vscode/
