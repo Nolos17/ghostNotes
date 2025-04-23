@@ -40,7 +40,6 @@ function createNotesWindow() {
     frame: false,
     alwaysOnTop: true,
     transparent: true,
-    backgroundColor: '#34C75980',
     webPreferences: {
       preload: path.join(__dirname, 'js/preload.js'),
     },
