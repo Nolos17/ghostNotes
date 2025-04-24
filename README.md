@@ -8,9 +8,9 @@
 ## ✨ Características
 
 📍 **Dock Flotante**  
-Un ícono circular (📝) que puedes arrastrar por la pantalla y que está siempre a tu alcance.  
-- Doble clic para abrir la ventana de notas.  
-- Botón de cierre (✕) para salir de la app.
+Icono flotante (📝) casi imperseptible que puede colocar en cualquier lougar de la pantalla para acceder a tus notas de manera rapida.  
+- Clic para abrir la ventana de notas.  
+
 
 📝 **Gestión de Notas**  
 Crea, edita y elimina notas con facilidad.  
@@ -21,14 +21,11 @@ Crea, edita y elimina notas con facilidad.
 - **Recargar**: Actualiza la lista con 🔄.  
 - Soporte para notas largas sin límite práctico.
 
-💾 **Persistencia de Datos**  
-Tus notas se guardan automáticamente en `C:\Users\<TuUsuario>\AppData\Roaming\barra-notas1\notes\notes.json` y persisten entre sesiones.
+💾 **Acceso rapido a tus Notas**  
+Tus notas se guardan automáticamente y puedes acceder a ellas en cualquier momento.
 
 🎨 **Diseño Moderno**  
-Interfaz estilizada con Tailwind CSS: fondo cian translúcido, bordes redondeados y botones interactivos.
-
-📦 **Instalador Personalizado**  
-Instalador para Windows con mensajes personalizados y desinstalador integrado.
+Interfaz estilizada y responsiva con Tailwind CSS.
 
 ---
 
@@ -36,11 +33,10 @@ Instalador para Windows con mensajes personalizados y desinstalador integrado.
 
 ⚡ **Electron**: Framework para aplicaciones de escritorio multiplataforma.  
 📜 **JavaScript**: Lógica de la app (proceso principal y renderer).  
-🎨 **HTML5/CSS**: Interfaz de usuario (dock y ventana de notas).  
+🎨 **HTML5/CSS**: Interfaz de usuario. 
 💅 **Tailwind CSS**: Estilos modernos y consistentes.  
 🌐 **Node.js**: Entorno para dependencias y empaquetado.  
 🔧 **Electron Forge**: Herramienta para empaquetar y generar instaladores (con Squirrel para Windows).  
-📋 **Inno Setup**: Personalización del instalador con mensajes.
 
 ---
 
@@ -49,6 +45,7 @@ Instalador para Windows con mensajes personalizados y desinstalador integrado.
 **Dock Flotante** 📍  
 ![Dock de GhostNotes](image/flotante.png)
 
+**Tus notas a un clic**
 ![Dock de GhostNotes](image/iconflotante.png)
 
 **Ventana de Notas** 📝  
@@ -66,15 +63,11 @@ Sigue estos pasos para instalar **GhostNotes** en tu computadora:
 - No se necesitan dependencias adicionales.
 
 ### 📥 Pasos para Instalar
-1. Descarga el instalador `BarraNotasSetup.exe` desde `out/make/squirrel.windows/x64/`.  
-   - **Nota**: El instalador se llama `BarraNotasSetup.exe` debido a una configuración anterior, pero instala GhostNotes.  
-2. Ejecuta `BarraNotasSetup.exe`.  
-   - Verás un mensaje: *"Bienvenido a la instalación de Barra Notas..."* (se actualizará en futuras versiones).  
-   - Haz clic en "Siguiente".  
-3. Sigue las instrucciones del asistente.  
-   - La app se instala en `C:\Program Files (x86)\BarraNotas`.  
-   - Se crean accesos directos en el escritorio y menú de inicio ("Barra Notas").  
-4. Haz clic en "Finalizar" para abrir GhostNotes.
+1. Descarga el instalador `InstaladorWx64` desde `https://github.com/Nolos17/ghostNotes/releases/tag/v1.0.0`.  
+2. Ejecuta `GhostNotes.exe`.  
+3. Espera a que se inicie la aplicación.  
+   - Se crea un acceso directos en tu escritorio.  
+4. Disfruta de la aplicación.
 
 ---
 
@@ -91,8 +84,8 @@ Sigue estos pasos para instalar **GhostNotes** en tu computadora:
 1. **Clonar o Copiar el Proyecto**  
    Transfiere la carpeta del proyecto o clona el repositorio:  
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd barra-notas1
+   git clone https://github.com/Nolos17/ghostNotes
+   cd ghostnotes
    ```
 
 2. **Instalar Dependencias**  
@@ -128,28 +121,21 @@ Sigue estos pasos para instalar **GhostNotes** en tu computadora:
    ```bash
    npm run package
    ```  
-   Esto crea `out/barra-notas-win32-x64/barra-notas.exe` (en Windows).
+   Esto crea `out/ghostnotes-win32-x64/barra-notas.exe` (en Windows).
 
 7. **Crear Instalador**  
    Genera el instalador:  
    ```bash
    npm run make
    ```  
-   Encuentra `BarraNotasSetup.exe` en `out/make/squirrel.windows/x64/`.
-
-8. **(Opcional) Personalizar Instalador**  
-   - Instala [Inno Setup](https://jrsoftware.org/isdl.php).  
-   - Usa `installer.iss` para compilar un instalador personalizado:  
-     - Abre Inno Setup Compiler.  
-     - Carga `installer.iss`.  
-     - Compila para generar el instalador en `Output/`.
+   Encuentra `GhostNotes.exe` en `out/make/squirrel.windows/x64/`.
 
 ---
 
 ## 🎯 Instrucciones de Uso
 
 📍 **Abrir Notas**  
-Haz doble clic en el dock flotante (📝) para abrir la ventana de notas.
+Haz clic en el dock flotante (📝) para abrir la ventana de notas.
 
 📝 **Gestionar Notas**  
 - **Crear**: Clic en ➕ para una nueva nota.  
@@ -188,7 +174,7 @@ Este proyecto está licenciado bajo la **Licencia MIT**. Consulta el archivo `LI
 ## 📞 Soporte
 
 ¿Tienes problemas o sugerencias?  
-- Contacta al desarrollador: [Tu correo o información de contacto].  
+- Contacta al desarrollador: [0993593185].  
 - Abre un issue en el repositorio (si está en GitHub).
 
 ¡Disfruta de tomar notas con **GhostNotes**! 📝✨
