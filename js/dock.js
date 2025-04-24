@@ -56,3 +56,8 @@ document.addEventListener('mouseup', () => {
     }
   }
 });
+
+document.getElementById('close-app').addEventListener('click', (e) => {
+  e.stopPropagation();
+  window.api.closeApp();
+});

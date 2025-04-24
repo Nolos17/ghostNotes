@@ -1,41 +1,29 @@
-const { FusesPlugin } = require('@electron-forge/plugin-fuses');
-const { FuseV1Options, FuseVersion } = require('@electron/fuses');
-
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: 'public/icon', // Ícono para la app
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        setupIcon: 'public/icon.ico', // Ícono para el instalador
+        shortcutName: 'GhostNotes', // Nombre del acceso directo
+        setupExe: 'GhostNotes.exe', // Nombre del instalador
+      }
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin']
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {}
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
-    },
-  ],
-  plugins: [
-    {
-      name: '@electron-forge/plugin-fuses',
-      config: {
-        version: FuseVersion.V1,
-        [FuseV1Options.RunAsNode]: false,
-        [FuseV1Options.EnableCookieEncryption]: true,
-        [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
-        [FuseV1Options.EnableNodeCliInspectArguments]: false,
-        [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
-        [FuseV1Options.OnlyLoadAppFromAsar]: true,
-      },
-    },
-  ],
+      config: {}
+    }
+  ]
 };

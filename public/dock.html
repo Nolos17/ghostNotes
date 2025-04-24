@@ -3,12 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <link href="../public/css/tailwind.css" rel="stylesheet">
+<style>
+  .close-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: #EF4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body class="bg-transparent overflow-hidden">
   <div id="boton"
        class="w-12 h-12 bg-cyan-400/10 rounded-full flex items-center justify-center text-white text-2xl cursor-pointer select-none shadow-lg hover:bg-cyan-300 transition"
        title="Haz clic para abrir una nota">
     📝
+  </div>
+  <div class="dock">
+    <span class="text-2xl">📝</span>
+    <div class="close-btn" id="close-app">✖️</div>
   </div>
   <script src="../js/dock.js"></script>
 </body>

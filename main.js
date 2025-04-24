@@ -5,6 +5,11 @@ const fs = require('fs').promises;
 let dock = null;
 let notesWindow = null;
 
+// Determina la ruta de notes.json según el entorno
+const userDataPath = app.getPath('userData'); // En producción: C:\Users\manol\AppData\Roaming\barra-notas1
+const notesDir = path.join(userDataPath, 'notes');
+const notesFilePath = path.join(notesDir, 'notes.json');
+console.log('Ruta de notes.json:', notesFilePath); // Añade este log
 function createDock() {
   if (dock) return;
 
@@ -40,6 +45,7 @@ function createNotesWindow() {
     frame: false,
     alwaysOnTop: true,
     transparent: true,
+    backgroundColor: '#34C75980',
     webPreferences: {
       preload: path.join(__dirname, 'js/preload.js'),
     },
@@ -85,18 +91,22 @@ ipcMain.on('move-window', (event, position) => {
   notesWindow.setPosition(position.x, position.y);
 });
 
+ipcMain.on('close-app', () => {
+  app.quit();
+});
+
 ipcMain.handle('load-notes', async () => {
-  const filePath = path.join(__dirname, 'notes/notes.json');
   try {
-    await fs.access(filePath);
-    const data = await fs.readFile(filePath, 'utf8');
+    await fs.access(notesFilePath);
+    const data = await fs.readFile(notesFilePath, 'utf8');
     const parsedData = JSON.parse(data);
     if (!Array.isArray(parsedData)) throw new Error('Invalid notes data');
     return parsedData;
   } catch (err) {
     if (err.code === 'ENOENT') {
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
-      await fs.writeFile(filePath, JSON.stringify([]));
+      // Crea el directorio y el archivo si no existen
+      await fs.mkdir(notesDir, { recursive: true });
+      await fs.writeFile(notesFilePath, JSON.stringify([]));
       return [];
     }
     console.error('Error loading notes:', err);
@@ -105,17 +115,16 @@ ipcMain.handle('load-notes', async () => {
 });
 
 ipcMain.handle('save-note', async (event, note) => {
-  const filePath = path.join(__dirname, 'notes/notes.json');
   let notes = [];
   try {
-    await fs.access(filePath);
-    const data = await fs.readFile(filePath, 'utf8');
+    await fs.access(notesFilePath);
+    const data = await fs.readFile(notesFilePath, 'utf8');
     notes = JSON.parse(data);
     if (!Array.isArray(notes)) throw new Error('Invalid notes data');
   } catch (err) {
     if (err.code === 'ENOENT') {
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
-      await fs.writeFile(filePath, JSON.stringify([]));
+      await fs.mkdir(notesDir, { recursive: true });
+      await fs.writeFile(notesFilePath, JSON.stringify([]));
     } else {
       console.error('Error reading notes:', err);
       return { success: false, error: err.message };
@@ -128,7 +137,7 @@ ipcMain.handle('save-note', async (event, note) => {
     notes.push(note);
   }
   try {
-    await fs.writeFile(filePath, JSON.stringify(notes, null, 2));
+    await fs.writeFile(notesFilePath, JSON.stringify(notes, null, 2));
     return { success: true };
   } catch (err) {
     console.error('Error saving note:', err);
@@ -137,17 +146,16 @@ ipcMain.handle('save-note', async (event, note) => {
 });
 
 ipcMain.handle('delete-note', async (event, id) => {
-  const filePath = path.join(__dirname, 'notes/notes.json');
   let notes = [];
   try {
-    await fs.access(filePath);
-    const data = await fs.readFile(filePath, 'utf8');
+    await fs.access(notesFilePath);
+    const data = await fs.readFile(notesFilePath, 'utf8');
     notes = JSON.parse(data);
     if (!Array.isArray(notes)) throw new Error('Invalid notes data');
   } catch (err) {
     if (err.code === 'ENOENT') {
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
-      await fs.writeFile(filePath, JSON.stringify([]));
+      await fs.mkdir(notesDir, { recursive: true });
+      await fs.writeFile(notesFilePath, JSON.stringify([]));
       return;
     }
     console.error('Error reading notes for delete:', err);
@@ -155,7 +163,7 @@ ipcMain.handle('delete-note', async (event, id) => {
   }
   const updatedNotes = notes.filter(n => n.id !== id);
   try {
-    await fs.writeFile(filePath, JSON.stringify(updatedNotes, null, 2));
+    await fs.writeFile(notesFilePath, JSON.stringify(updatedNotes, null, 2));
   } catch (err) {
     console.error('Error deleting note:', err);
   }

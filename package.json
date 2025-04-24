@@ -1,5 +1,5 @@
 {
-  "name": "barra-notas",
+  "name": "ghostnote",
   "version": "1.0.0",
   "description": "Aplicación de escritorio para gestionar notas con Electron y Tailwind CSS, cheverazo",
   "main": "main.js",

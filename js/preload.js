@@ -7,5 +7,6 @@ contextBridge.exposeInMainWorld('api', {
   closeWindow: () => ipcRenderer.send('close-window'),
   moveDock: (position) => ipcRenderer.send('move-dock', position),
   newNote: () => ipcRenderer.send('new-note'),
-  moveWindow: (position) => ipcRenderer.send('move-window', position)
+  moveWindow: (position) => ipcRenderer.send('move-window', position),
+  closeApp: () => ipcRenderer.send('close-app')
 });
