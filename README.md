@@ -63,7 +63,7 @@ Sigue estos pasos para instalar **GhostNotes** en tu computadora:
 - No se necesitan dependencias adicionales.
 
 ### 📥 Pasos para Instalar
-1. Descarga el instalador `InstaladorWx64` desde `https://github.com/Nolos17/ghostNotes/releases/tag/v1.0.0`.  
+1. Descarga el instalador desde [GitHub Releases](https://github.com/Nolos17/ghostNotes/releases/tag/v1.0.0). 
 2. Ejecuta `GhostNotes.exe`.  
 3. Espera a que se inicie la aplicación.  
    - Se crea un acceso directos en tu escritorio.  
@@ -174,7 +174,7 @@ Este proyecto está licenciado bajo la **Licencia MIT**. Consulta el archivo `LI
 ## 📞 Soporte
 
 ¿Tienes problemas o sugerencias?  
-- Contacta al desarrollador: [0993593185].  
+- Contacta al desarrollador: [noloststorres@gmail.com](noloststorres@gmail.com).  
 - Abre un issue en el repositorio (si está en GitHub).
 
 ¡Disfruta de tomar notas con **GhostNotes**! 📝✨
